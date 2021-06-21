@@ -10,3 +10,11 @@ iptables -t mangle -X;
 iptables -P INPUT ACCEPT;
 iptables -P FORWARD ACCEPT;
 iptables -P OUTPUT ACCEPT;
+
+
+#########
+iptables -A INPUT -p tcp --dport 666 -j ACCEPT
+iptables -A INPUT -p udp --dport 666 -j ACCEPT
+iptables-save
+nano /etc/apache2/ports.conf
+service networking restart
